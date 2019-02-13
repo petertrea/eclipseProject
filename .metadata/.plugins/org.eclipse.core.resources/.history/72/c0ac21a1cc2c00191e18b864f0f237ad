@@ -1,0 +1,18 @@
+package module1;
+
+import processing.core.*;
+
+public class MypApplet extends PApplet {
+	private String URL = "http://...jpg";
+	private PImage backgroudImg;
+	
+	public void setup() {
+		size(200,200);
+		backgroudImg = loadImage(URL, "jpg");
+	}
+	
+	public void draw() {
+		image(backgroundImg,0,0);
+	}
+
+}

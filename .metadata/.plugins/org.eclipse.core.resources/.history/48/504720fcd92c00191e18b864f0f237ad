@@ -1,0 +1,25 @@
+package guimodule;
+
+import processing.core.*;
+
+public class MypApplet extends PApplet {
+	private String URL = "http://cseweb.ucsd.edu/~minnes/palmTrees.jpg";
+	private PImage img;
+	
+	public void setup() {
+		size(400,400);		//set canvas size
+		background(255);	//set canvas color
+		stroke(0);			//set pen color
+		img = loadImage(URL, "jpg");
+		img.resize(0,height);	//resize loaded image to full heigth of cavas
+		image(img,0,0);	//display image
+	}
+	
+	public void draw() {
+		
+		
+		fill(255,209,0);
+		ellipse(width/4,height/5, width/5, height/5);
+	}
+
+}
