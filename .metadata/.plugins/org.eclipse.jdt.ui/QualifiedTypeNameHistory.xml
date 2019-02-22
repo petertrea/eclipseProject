@@ -2,4 +2,14 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="processing.core.PApplet"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.UnfoldingMap"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.utils.MapUtils"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.Google"/>
+<fullyQualifiedTypeName name="com.jogamp.opengl.math.geom.Frustum.Location"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.marker.SimplePointMarker"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.data.PointFeature"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.data.Feature"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.marker.Marker"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.Microsoft"/>
 </qualifiedTypeNameHistroy>

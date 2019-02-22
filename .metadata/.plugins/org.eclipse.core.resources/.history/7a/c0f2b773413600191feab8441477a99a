@@ -1,0 +1,31 @@
+package module1;
+
+import java.util.*;
+
+import com.jogamp.opengl.math.geom.Frustum.Location;
+
+import de.fhpotsdam.unfolding.data.Feature;
+import de.fhpotsdam.unfolding.data.PointFeature;
+
+public class FeatureSetter {
+	private Location valLoc;
+	private Feature fName;
+	
+	
+	public FeatureSetter() {
+		
+	}
+	
+	public Feature featureBuilder(float lat, float lon, 
+			String fName, String title, String magnitude, String date, String year) {
+		valLoc.setLat(lat);
+		valloc.setLon(lon);
+		//valLoc = new Location (Lat, Long);
+		fName = new PointFeature(valLoc);
+		fName.addProperty("title", title);
+		fName.addProperty("magnitude", magnitude);
+		fName.addProperty("date", date);
+		fName.addProperty("year", year)
+		return fName;
+	}
+}

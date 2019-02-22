@@ -1,0 +1,39 @@
+package module1;
+
+import processing.core.*;
+
+import com.jogamp.opengl.math.geom.Frustum.Location;
+
+import de.fhpotsdam.unfolding.UnfoldingMap;
+import de.fhpotsdam.unfolding.data.Feature;
+import de.fhpotsdam.unfolding.data.PointFeature;
+import de.fhpotsdam.unfolding.marker.SimplePointMarker;
+import de.fhpotsdam.unfolding.providers.Google;
+import de.fhpotsdam.unfolding.utils.MapUtils;
+
+public class EarthquakeCityMap extends PApplet {
+	private UnfoldingMap map;
+	
+	public void setup() {
+		size(950, 600, OPENGL);
+		map = new UnfoldingMap(this, 200,50,700,500, new Google.GoogleMapProvider());
+		map.zoomToLevel(2);
+		MapUtils.createDefaultEventDispatcher(this, map);
+		Location valLoc = new Location (-38.14f, -73.03f);
+		Feature valEq= new PointFeature(valLoc);
+		valEq.addProperty("title","Valdivia, Chile");
+		valEq.addProperty("magnitude","9.5");
+		valEq.addProperty("date","May 22, 1960");
+		valEq.addProperty("year","1960");
+		Marker val = new SimplePointMarker(valLoc);
+		map.addMarker(val);	
+		
+		
+	}
+	public void draw() {
+		background(10);
+		map.draw();
+		//addKey();
+	}
+
+}
