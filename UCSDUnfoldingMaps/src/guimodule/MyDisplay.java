@@ -9,13 +9,13 @@ public class MyDisplay extends PApplet{
 		
 	}
 	public void draw() {
-		fill(255,255,0);
-		ellipse(200,200,390,390);
-		fill(0,0,0);
-		ellipse(120,130, 50,70);
+		fill(255,255,0);			//fill yellow color
+		ellipse(200,200,390,390);	//draw face (a round ellipse)
+		fill(0,0,0);				//fill black color
+		ellipse(120,130, 50,70);	//draw eyes (two small ellipse)
 		ellipse(280,130, 50,70);
-		noFill();
-		arc(200,280,100,100,0,PI);
+		noFill();					//background color
+		arc(200,280,100,100,0,PI);	//draw mouth (arc)
 	}
 
 }

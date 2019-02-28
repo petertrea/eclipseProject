@@ -16,15 +16,14 @@ public class MypApplet extends PApplet {
 	}
 	
 	public void draw() {
-		int[] color = sunColorSec(second());		// calculate color code for sun
-		
-		fill(color[0],color[1],color[2]);
-		ellipse(width/4,height/5, width/5, height/5);
+		int[] color = sunColorSec(second());			// calculate color code for sun
+		fill(color[0],color[1],color[2]);				//set sun color
+		ellipse(width/4,height/5, width/5, height/5);	//draw sun
 	}
 	
 	public int[] sunColorSec(float seconds) {
 		int[] rgb = new int [3];
-		//Scale the brigthness of the yellow based on the seconds. 
+		// scale the brightness of the yellow based on the seconds. 
 		// 30 seconds is black. 0 seconds is bright yellow
 		float diffFrom30 = Math.abs(30-seconds);
 		
