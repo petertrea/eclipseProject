@@ -9,9 +9,10 @@
 	</section>
 	<section name="ExternalProjectImportWizard">
 		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
-		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="H:\Z Drive\myProject\eclipseProject"/>
 			<item value="C:\Users\peter\Downloads\_3c3ec51e972ae18cabe2019f6aa77791_OOPStarterCode\UCSDUnfoldingMaps"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
@@ -25,7 +26,7 @@
 	<section name="NewWizardAction">
 	</section>
 	<section name="ChooseWorkspaceDialogSettings">
-		<item value="533" key="DIALOG_X_ORIGIN"/>
-		<item value="743" key="DIALOG_Y_ORIGIN"/>
+		<item value="-477" key="DIALOG_X_ORIGIN"/>
+		<item value="416" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
