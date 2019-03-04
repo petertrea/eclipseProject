@@ -9,8 +9,7 @@ import processing.core.PGraphics;
  * @author Your name here
  *
  */
-public class LandQuakeMarker extends EarthquakeMarker {
-	
+public class LandQuakeMarker extends EarthquakeMarker {	
 	
 	public LandQuakeMarker(PointFeature quake) {
 		
@@ -25,11 +24,9 @@ public class LandQuakeMarker extends EarthquakeMarker {
 	/** Draw the earthquake as an ellipse */
 	@Override
 	public void drawEarthquake(PGraphics pg, float x, float y) {
-		pg.ellipse(x, y, 2*radius, 2*radius);
-		
+		pg.ellipse(x, y, 2*radius, 2*radius);		
 	}
 	
-
 	// Get the country the earthquake is in
 	public String getCountry() {
 		return (String) getProperty("country");

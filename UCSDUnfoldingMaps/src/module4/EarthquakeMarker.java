@@ -3,6 +3,7 @@ package module4;
 import de.fhpotsdam.unfolding.data.PointFeature;
 import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import processing.core.PGraphics;
+import processing.core.PApplet;
 
 /** Implements a visual marker for earthquakes on an earthquake map
  * 
@@ -10,9 +11,7 @@ import processing.core.PGraphics;
  * @author Your name here
  *
  */
-public abstract class EarthquakeMarker extends SimplePointMarker
-{
-	
+public abstract class EarthquakeMarker extends SimplePointMarker {	
 	// Did the earthquake occur on land?  This will be set by the subclasses.
 	protected boolean isOnLand;
 
@@ -22,9 +21,7 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 	//
 	// You will want to set this in the constructor, either
 	// using the thresholds below, or a continuous function
-	// based on magnitude. 
-  
-	
+	// based on magnitude. 	
 	
 	/** Greater than or equal to this threshold is a moderate earthquake */
 	public static final float THRESHOLD_MODERATE = 5;
@@ -36,8 +33,10 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 	/** Greater than or equal to this threshold is a deep depth */
 	public static final float THRESHOLD_DEEP = 300;
 
-	// ADD constants for colors
-
+	// ADD constants for colors (Still need to work)
+//	int yellow = color(255, 255, 0);
+//	public static final int red = color(255,0,0);
+//	public static final int blue = color(0,0,255);
 	
 	// abstract method implemented in derived classes
 	public abstract void drawEarthquake(PGraphics pg, float x, float y);
@@ -50,9 +49,10 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 		// Add a radius property and then set the properties
 		java.util.HashMap<String, Object> properties = feature.getProperties();
 		float magnitude = Float.parseFloat(properties.get("magnitude").toString());
-		properties.put("radius", 2*magnitude );
+		properties.put("radius", 4*magnitude );
 		setProperties(properties);
 		this.radius = 1.75f*getMagnitude();
+//		System.out.println(feature.getProperties());		
 	}
 	
 
@@ -68,6 +68,15 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 		drawEarthquake(pg, x, y);
 		
 		// OPTIONAL TODO: draw X over marker if within past day		
+		String age = this.getAge();
+		if (age.equals("Past Day")) {
+			pg.fill(0,0,0);
+			pg.stroke(0);
+			pg.strokeWeight(2);
+			pg.line(x-radius*2, y-radius*2, x+radius*2, y+radius*2);
+			pg.line(x-radius*2, y+radius*2, x+radius*2, y-radius*2);
+		}
+		
 		
 		// reset to previous styling
 		pg.popStyle();
@@ -81,9 +90,17 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 	// You might find the getters below helpful.
 	private void colorDetermine(PGraphics pg) {
 		//TODO: Implement this method
-	}
-	
-	
+		float depth = this.getDepth();
+				
+		if (depth >=THRESHOLD_DEEP ) {
+			pg.fill(255,0,0);
+		} else if (depth >= THRESHOLD_INTERMEDIATE) {
+			pg.fill(0,0,255);
+		} else {
+			pg.fill(255,255,0);
+		}
+	}	
+
 	/*
 	 * getters for earthquake properties
 	 */
@@ -100,6 +117,10 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 		return (String) getProperty("title");	
 		
 	}
+	
+	public String getAge() {
+		return (String) getProperty("age");			
+	}	
 	
 	public float getRadius() {
 		return Float.parseFloat(getProperty("radius").toString());

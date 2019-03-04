@@ -9,8 +9,7 @@ import processing.core.PGraphics;
  * @author Your name here
  *
  */
-public class LandQuakeMarker extends EarthquakeMarker {
-	
+public class LandQuakeMarker extends EarthquakeMarker {	
 	
 	public LandQuakeMarker(PointFeature quake) {
 		
@@ -20,7 +19,6 @@ public class LandQuakeMarker extends EarthquakeMarker {
 		// setting field in earthquake marker
 		isOnLand = true;
 	}
-
 
 	@Override
 	public void drawEarthquake(PGraphics pg, float x, float y) {
@@ -33,9 +31,10 @@ public class LandQuakeMarker extends EarthquakeMarker {
 		// and how it is set in the EarthquakeMarker constructor
 		
 		// TODO: Implement this method
-		
-	}
-	
+		float radius = super.getRadius();
+		pg.ellipse(x,y,radius,radius);
+
+	}	
 
 	// Get the country the earthquake is in
 	public String getCountry() {

@@ -16,18 +16,15 @@ public class CityMarker extends SimplePointMarker {
 	
 	// The size of the triangle marker
 	// It's a good idea to use this variable in your draw method
-	public static final int TRI_SIZE = 5;  
+	public static final int TRI_SIZE = 20;  
 	
 	public CityMarker(Location location) {
 		super(location);
 	}
 	
-	
 	public CityMarker(Feature city) {
 		super(((PointFeature)city).getLocation(), city.getProperties());
 	}
-	
-	
 	
 	/**
 	 * Implementation of method to draw marker on the map.
@@ -46,6 +43,10 @@ public class CityMarker extends SimplePointMarker {
 		// whose upper left corner is at position x, y
 		// Check out the processing documentation for more methods
 		
+		//var diff used for compute location diff to triangle 3 points
+		float diff = (float) (TRI_SIZE*Math.sqrt(3)/6);
+		pg.fill(25, 25, 25);
+		pg.triangle(x,y-diff*2,x-TRI_SIZE/2,y+diff,x+TRI_SIZE/2,y+diff);
 		
 		// Restore previous drawing style
 		pg.popStyle();
