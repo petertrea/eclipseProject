@@ -56,6 +56,7 @@ public class EarthquakeCityMap extends PApplet {
 	// NEW IN MODULE 5
 	private CommonMarker lastSelected;
 	private CommonMarker lastClicked;
+	private boolean getClicked;
 	
 	public void setup() {		
 		// (1) Initializing canvas and map tiles
@@ -115,7 +116,7 @@ public class EarthquakeCityMap extends PApplet {
 	/** Event handler that gets called automatically when the 
 	 * mouse moves.
 	 */
-/*	@Override
+	@Override
 	public void mouseMoved() {
 		// clear the last selection
 		if (lastSelected != null) {
@@ -141,7 +142,7 @@ public class EarthquakeCityMap extends PApplet {
 		}
 	}
 	
-*/	/** The event handler for mouse clicks
+	/** The event handler for mouse clicks
 	 * It will display an earthquake and its threat circle of cities
 	 * Or if a city is clicked, it will display all the earthquakes 
 	 * where the city is in the threat circle
@@ -160,10 +161,7 @@ public class EarthquakeCityMap extends PApplet {
 			lastClicked.setClicked(true);
 //			lastClicked = null;		
 		}
-		if (lastSelected != null) {
-			lastSelected.setClicked(false);
-			lastSelected = null;		
-		}
+
 //		unhideMarkers();
 		selectMarkerIfClicked(quakeMarkers);
 		selectMarkerIfClicked(cityMarkers);
