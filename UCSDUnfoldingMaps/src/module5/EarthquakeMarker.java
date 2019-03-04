@@ -9,8 +9,7 @@ import processing.core.PGraphics;
  * @author Your name here
  *
  */
-public abstract class EarthquakeMarker extends CommonMarker
-{
+public abstract class EarthquakeMarker extends CommonMarker {
 	
 	// Did the earthquake occur on land?  This will be set by the subclasses.
 	protected boolean isOnLand;
@@ -19,8 +18,7 @@ public abstract class EarthquakeMarker extends CommonMarker
 	// You will want to set this in the constructor, either
 	// using the thresholds below, or a continuous function
 	// based on magnitude. 
-	protected float radius;
-	
+	protected float radius;	
 	
 	// constants for distance
 	protected static final float kmPerMile = 1.6f;
@@ -36,15 +34,12 @@ public abstract class EarthquakeMarker extends CommonMarker
 	public static final float THRESHOLD_DEEP = 300;
 
 	// ADD constants for colors if you want
-
 	
 	// abstract method implemented in derived classes
-	public abstract void drawEarthquake(PGraphics pg, float x, float y);
-		
+	public abstract void drawEarthquake(PGraphics pg, float x, float y);		
 	
 	// constructor
-	public EarthquakeMarker (PointFeature feature) 
-	{
+	public EarthquakeMarker (PointFeature feature) {
 		super(feature.getLocation());
 		// Add a radius property and then set the properties
 		java.util.HashMap<String, Object> properties = feature.getProperties();
@@ -52,8 +47,7 @@ public abstract class EarthquakeMarker extends CommonMarker
 		properties.put("radius", 2*magnitude );
 		setProperties(properties);
 		this.radius = 1.75f*getMagnitude();
-	}
-	
+	}	
 
 	// calls abstract method drawEarthquake and then checks age and draws X if needed
 	@Override
@@ -80,23 +74,22 @@ public abstract class EarthquakeMarker extends CommonMarker
 			pg.line(x-(radius+buffer), 
 					y+(radius+buffer), 
 					x+radius+buffer, 
-					y-(radius+buffer));
-			
+					y-(radius+buffer));			
 		}
 		
 		// reset to previous styling
-		pg.popStyle();
-		
+		pg.popStyle();		
 	}
 
 	/** Show the title of the earthquake if this marker is selected */
 	@Override
-	public void showTitle(PGraphics pg, float x, float y)
-	{
+	public void showTitle(PGraphics pg, float x, float y) {
 		// TODO: Implement this method
-		
+		String printContent = this.getTitle();
+		pg.textSize(24);
+		pg.fill(0, 0, 0);
+		pg.text(printContent, x, y);
 	}
-
 	
 	/**
 	 * Return the "threat circle" radius, or distance up to 
@@ -125,13 +118,11 @@ public abstract class EarthquakeMarker extends CommonMarker
 		else {
 			pg.fill(255, 0, 0);
 		}
-	}
-	
+	}	
 	
 	/*
 	 * getters for earthquake properties
-	 */
-	
+	 */	
 	public float getMagnitude() {
 		return Float.parseFloat(getProperty("magnitude").toString());
 	}
@@ -141,8 +132,7 @@ public abstract class EarthquakeMarker extends CommonMarker
 	}
 	
 	public String getTitle() {
-		return (String) getProperty("title");	
-		
+		return (String) getProperty("title");			
 	}
 	
 	public float getRadius() {
@@ -152,9 +142,5 @@ public abstract class EarthquakeMarker extends CommonMarker
 	public boolean isOnLand()
 	{
 		return isOnLand;
-	}
-	
-
-	
-	
+	}	
 }
