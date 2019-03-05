@@ -55,8 +55,7 @@ public class EarthquakeCityMap extends PApplet {
 	
 	// NEW IN MODULE 5
 	private CommonMarker lastSelected;
-	private CommonMarker lastClicked;
-	private boolean getClicked;
+	private CommonMarker lastClicked;	
 	
 	public void setup() {		
 		// (1) Initializing canvas and map tiles
@@ -151,36 +150,27 @@ public class EarthquakeCityMap extends PApplet {
 	public void mouseClicked()	{	
 		// Hint: You probably want a helper method or two to keep this code
 		// from getting too long/disorganized
-		if (lastClicked.getClicked() == true) {
-//			lastClicked.setHidden(false);
-			lastClicked.setClicked(false);
-//			lastClicked = null;		
-		}
-		if (lastClicked.getClicked() == false) {
-//			lastClicked.setHidden(false);
-			lastClicked.setClicked(true);
-//			lastClicked = null;		
-		}
 
-//		unhideMarkers();
-		selectMarkerIfClicked(quakeMarkers);
-		selectMarkerIfClicked(cityMarkers);
-		//threatCircle();
-		//protected boolean clicked = false;
-		//public boolean getClicked();
-
+		if (lastClicked !=null) {
+			unhideMarkers();
+			lastClicked = null;
+		} else if (lastClicked == null) {
+			selectMarkerIfClicked(quakeMarkers);
+			selectMarkerIfClicked(cityMarkers);					
+		}
 	}
-	private void selectMarkerIfClicked(List<Marker> markers) {		
+	private void selectMarkerIfClicked(List<Marker> markers) {	
 		for (Marker marker : markers) {
-			if (marker.isInside(map, mouseX, mouseY)&&(lastClicked == null)) {
+			if (marker.isSelected()==true &&(lastClicked == null)) {
 				lastClicked = (CommonMarker) marker;
 				lastClicked.setClicked(true);
-				lastClicked.setHidden(false);
-			} else {
+				lastClicked.setHidden(false);				
+			}else {
 				marker.setHidden(true);
 			}
 		}
-	}	
+	}				
+
 /*	private void selectQuakeMarkerIfClicked(List<Marker> markers) {				
 		for (Marker marker : markers) {			
 //			(threat distance) double dist = ((EarthquakeMarker) marker).threatCircle();
